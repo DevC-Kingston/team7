@@ -1,4 +1,4 @@
-# Your Chatbot's Name
+# CovFeed
 
 [//]: <> (Please use this Winning Hackathon Application as an example:
 https://devpost.com/software/rewise-ai-powered-revision-bot)
@@ -6,12 +6,10 @@ https://devpost.com/software/rewise-ai-powered-revision-bot)
 **Team Members**: Kimberly Stewart, Dylan Lewis, Sisqo Baker, Gregory Sinclair, Christopher Martin
 
 ## Inspiration
-Add your Team’s Inspiration for the Chatbot
-
+Traveling is now a thing! and everyone wants to get out the house after being locked up for MONTHS to explore. However, precautions must be taken when looking to explore options. Persons would love for easy easy access to information about whats open, protocols to follow and max of persons allowed.
 
 ## What it does
-Add a short description
-
+Our messenger chatbot will provide realtime Covid updates for persons wanting to know what is the latest news in the region.  It will provide persons with 
 
 ## List your Chatbot’s features and use cases
 1. 1

@@ -9,7 +9,8 @@ https://devpost.com/software/rewise-ai-powered-revision-bot)
 Traveling is now a thing! and everyone wants to get out the house after being locked up for MONTHS to explore. However, precautions must be taken when looking to explore options. Persons would love for easy easy access to information about whats open, protocols to follow and max of persons allowed.
 
 ## What it does
-Our messenger chatbot will provide realtime Covid updates for persons wanting to know what is the latest news in the region.  It will provide persons with 
+Our messenger chatbot will provide realtime Covid updates for persons wanting to know what is the latest news in the region.  It will provide persons with information about their favorite places that have resumed operations during pandemic along with:
+where is open, new operational times, protocols observed, curfew times and more!
 
 ## List your Chatbot’s features and use cases
 1. 1
@@ -23,8 +24,9 @@ Tech Stack & Documentation:
 
 
 ## Challenges we ran into
-1. Challenge 1
-1. Challenge 2
+1. Learning the language to use
+1. Finding resources to use
+1. Determining a flow
  
  
 ## Accomplishments that we're proud of
@@ -33,11 +35,11 @@ Tech Stack & Documentation:
 
 
 ## What we learned
-* Learning 1
-* Learning 2
+* Teamwork
+* Working around each team member skill
 
 
-## What's next for “Insert Your Bot Name”
+## What's next for “CovFeed”
 Product Roadmap - next features for example
 1. Feature 1
 1. Feature 2

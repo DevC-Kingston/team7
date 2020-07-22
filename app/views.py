@@ -1,58 +1,47 @@
-"""
-Flask Documentation:     http://flask.pocoo.org/docs/
-Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
-Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
-This file creates your application.
-"""
-
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import Flask
+import urllib
+import json
+import traceback
+from flask import request, render_template
 
 
-###
-# Routing for your application.
-###
+FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
+VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='  # openssl rand -base64 32
+PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
+
 
 @app.route('/')
-def home():
-    """Render website's home page."""
-    return render_template('home.html')
+def hello_world():
+    return 'Hello, World!'
+
+def send_message(recipient_id, text):
+    """Send a response to Facebook"""
+    payload = {
+        'message': {
+            'text': text
+        },
+        'recipient': {
+            'id': recipient_id
+        },
+        'notification_type': 'regular'
+    }
+
+    auth = {
+        'access_token': PAGE_ACCESS_TOKEN
+    }
+
+    response = requests.post(
+        FB_API_URL,
+        params=auth,
+        json=payload
+    )
+
+    response.json()
 
 
-@app.route('/about/')
-def about():
-    """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
-
-
-###
-# The functions below should be applicable to all Flask apps.
-###
-
-@app.route('/<file_name>.txt')
-def send_text_file(file_name):
-    """Send your static text file."""
-    file_dot_text = file_name + '.txt'
-    return app.send_static_file(file_dot_text)
-
-
-@app.after_request
-def add_header(response):
-    """
-    Add headers to both force latest IE rendering engine or Chrome Frame,
-    and also tell the browser not to cache the rendered page. If we wanted
-    to we could change max-age to 600 seconds which would be 10 minutes.
-    """
-    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
-    response.headers['Cache-Control'] = 'public, max-age=0'
-    return response
-
-
-@app.errorhandler(404)
-def page_not_found(error):
-    """Custom 404 page."""
-    return render_template('404.html'), 404
-
-
-if __name__ == '__main__':
-    app.run(debug=True,host="0.0.0.0",port="8080")
+def verify_webhook(req):
+    if req.args.get("hub.verify_token") == VERIFY_TOKEN:
+        return req.args.get("hub.challenge")
+    else:
+        return "incorrect"

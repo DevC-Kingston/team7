@@ -28,10 +28,10 @@ def listen():
         event = payload['entry'][0]['messaging']
         for x in event:
             if is_user_message(x):
-             #   text = x['message']['text']
-             #  sender_id = x['sender']['id']
-             #  respond(sender_id, text)
-             send_quick_replies()
+               text = x['message']['text']
+               sender_id = x['sender']['id']
+               respond(sender_id, text)
+          #   send_quick_replies()
 
         return "ok"
 

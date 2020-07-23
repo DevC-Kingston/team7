@@ -69,18 +69,17 @@ def send_message(recipient_id, response):
     return "success"
 
 
-def covnewsdic(i):
     switcher={
         "prevention": prevention, 
         "symptoms": symptoms
              }
 
-    if text == "prevention":
-        return switcher["preventon"]()
-    elif text =="symptoms":
-        return switcher["symptoms"]()
-    else:
-        return "Please type'prevention' or 'symptoms'"
+    # if text == "prevention":
+    #     return switcher["preventon"]()
+    # elif text =="symptoms":
+    #     return switcher["symptoms"]()
+    # else:
+    #     return "Please type'prevention' or 'symptoms'"
 
 
 """Handles 'covnews' selection"""
@@ -89,9 +88,9 @@ def covnews(sender):
     respond(sender,response)
     
     if text == "prevention":
-        prevention(sender)
+        switcher[prevention](sender)
     elif text == "symptoms":
-        symptoms(sender)
+        switcher[symptoms](sender)
     return "ok"
     
 

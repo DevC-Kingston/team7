@@ -3,7 +3,7 @@ from flask import Flask
 import urllib
 import json
 import traceback
-from flask import request, render_template
+import requests
 from credentials import credentials
 from pymessenger import Bot
 
@@ -97,7 +97,7 @@ def send_quick_replies():
         'access_token': PAGE_ACCESS_TOKEN
     }
     
-    response = request.post(
+    response = requests.post(
         FB_API_URL,
         params=auth,
         json=quickreply)

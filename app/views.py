@@ -64,7 +64,7 @@ def is_user_message(message):
 def respond(sender, message):
     
     # response = get_bot_response(message)
-    send_message(sender, response)
+    send_message(sender, message)
     
 
 #uses PyMessenger to send response to user
@@ -135,7 +135,7 @@ def covnews(sender):
 
 """Handles 'covnews' prevention msg"""
 def prevention(sender):
-    response = "Stay tf at home"
+    response = "Stay tf home "
     return respond(sender,response)
 
 """Handles 'covnews' symp"""

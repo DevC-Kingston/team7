@@ -91,7 +91,7 @@ def send_quick_replies():
     ]
   }
 }
-    quickreply = json.dumps(jsonoject)
+    quickreply = json.dumps(jsonobject)
 
     auth = {
         'access_token': PAGE_ACCESS_TOKEN

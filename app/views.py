@@ -40,11 +40,9 @@ def listen():
                    return respond(sender_id, response)
 
 
-              # respond(sender_id, text)
+              #respond(sender_id, text)
             #if text != "CovNews" or "pil":
-                
-            # send_quick_replies()
-        # return text
+        return
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):

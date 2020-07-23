@@ -11,7 +11,7 @@ from pymessenger import Bot
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
 VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='
 PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
-
+sender_id = 000
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 """The listen() function handles these http requests and 
@@ -33,18 +33,19 @@ def listen():
 
                if text == "covnews":
                    return covnews(sender_id,text)
-               elif text == "entertainment":
+               elif text == "pil":
                   return ent(sender_id,text)
                else:
-                   return respond(sender_id, "")
+                   response = "I am sorry but I do not understand. Please enter covnews or pil to continue"
+                   return respond(sender_id, response)
 
 
               # respond(sender_id, text)
-            #if text != "CovNews" or "Entertainment":
+            #if text != "CovNews" or "pil":
                 
           #   send_quick_replies()
 
-        return "ok"
+        return text
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):
@@ -64,16 +65,7 @@ def respond(sender, message):
     
     # response = get_bot_response(message)
     send_message(sender, response)
-
-"""This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
-# def get_bot_response(message):
-#     reply = "Type CovNews or Entertainment"
-#     return "This is a dummy response to {message} Please {reply}".format(message=message, reply=reply)
-
-def preventionResponse():
-    return ""
     
-
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
@@ -128,23 +120,31 @@ def covnewsdic(i):
     else:
         return "Please type'prevention' or 'symptoms'"
 
-greetings = {"hi", "hello", "good day"}
-
-
 
 """Handles 'covnews' selection"""
 def covnews(sender):
-    response = "Would you like info about Symptoms, Prevention or inquire about a store near you?"
-    return respond(sender,response)
+    response = "Would you like info about Symptoms or Prevention"
+    respond(sender,response)
+    y=listen()
+    if y == "prevention":
+        prevention(sender)
+    elif y == "symptoms":
+        symptoms(sender)
+    return "ok"
     
 
 """Handles 'covnews' prevention msg"""
-def prevention():
-
-    return ""
+def prevention(sender):
+    response = "Stay tf at home"
+    return respond(sender,response)
 
 """Handles 'covnews' symp"""
-def symptoms():
+def symptoms(sender):
+    return ""
+
+"""Places in lockdown feature"""
+
+def pil(sender, text):
     return ""
 
 """Handles 'covnews' worldwide"""
@@ -157,8 +157,7 @@ def countryStat(country):
 
 
 """Handles 'ent' selection"""
-def ent(sender_id,text):
-    return ""
+
 
 
 def placesInfo():

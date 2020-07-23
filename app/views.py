@@ -5,12 +5,15 @@ import json
 import traceback
 from flask import request, render_template
 from credentials import credentials
-
+from pymessenger import Bot
 
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
 VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='
 PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
+
+bot = Bot(PAGE_ACCESS_TOKEN)
+
 
 
 
@@ -39,29 +42,27 @@ def verify_webhook(req):
     else:
         return "incorrect again"
 
-# def send_message(recipient_id, text):
-#     """Send a response to Facebook"""
-#     payload = {
-#         'message': {
-#             'text': text
-#         },
-#         'recipient': {
-#             'id': recipient_id
-#         },
-#         'notification_type': 'regular'
-#     }
+def send_message(recipient_id, text):
+    """Send a response to Facebook"""
+    payload = {
+        'message': {
+            'text': text
+        },
+        'recipient': {
+            'id': recipient_id
+        },
+        'notification_type': 'regular'
+    }
+    auth = {
+        'access_token': PAGE_ACCESS_TOKEN
+    }
+    response = requests.post(
+        FB_API_URL,
+        params=auth,
+        json=payload
+    )
 
-#     auth = {
-#         'access_token': PAGE_ACCESS_TOKEN
-#     }
-
-#     response = requests.post(
-#         FB_API_URL,
-#         params=auth,
-#         json=payload
-#     )
-
-#     response.json()
+    response.json()
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -88,14 +89,9 @@ def rec_message(text):
                         send_message(recipient_id, response_sent_nontext)
         return "Message Processed"
 
-def send_message(sender_id, message_text):
-    '''
-    Sending response back to the user using facebook graph API
-    '''
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages",
-    params={"access_token": PAGE_ACCESS_TOKEN},
-    headers={"Content-Type": "application/json"},
-    data=json.dumps({
-        "recipient": {"id": sender_id},
-        "message": {"text": message_text}
-    }))
+
+#uses PyMessenger to send response to user
+def send_message(recipient_id, response):
+    #sends user the text message provided via input response parameter
+    bot.send_text_message(recipient_id, response)
+    return "success"

@@ -9,8 +9,8 @@ from pymessenger import Bot
 
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
-VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='
-PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
+VERIFY_TOKEN = 'add verify token'
+PAGE_ACCESS_TOKEN = 'add access token'
 sender_id = 000
 text = ""
 bot = Bot(PAGE_ACCESS_TOKEN)
@@ -92,7 +92,7 @@ def covnews(sender):
 
 """Handles 'covnews' prevention msg"""
 def prevention(sender):
-    response = "Stay tf home "
+    response = "Stay home "
     return respond(sender,response)
 
 """Handles 'covnews' symp"""

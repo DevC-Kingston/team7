@@ -11,7 +11,7 @@ from pymessenger import Bot
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
 VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='
 PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
-# sender_id = 000
+sender_id = 000
 text = ""
 bot = Bot(PAGE_ACCESS_TOKEN)
 
@@ -42,7 +42,7 @@ def listen():
 
 
               #respond(sender_id, text)
-        return "ok"
+    return "ok"
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):

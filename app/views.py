@@ -39,10 +39,8 @@ def listen():
                else:
                    response = "I am sorry, I do not understand. Please enter "'covnews'" or "'pil'" to continue"
                    return respond(sender_id, response)
-
-
               #respond(sender_id, text)
-    return "ok"
+        return "ok"
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):
@@ -59,9 +57,9 @@ def is_user_message(message):
             
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
-    
     # response = get_bot_response(message)
     send_message(sender, message)
+    return "ok"
     
 
 #uses PyMessenger to send response to user
@@ -69,39 +67,6 @@ def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
     return "success"
-
-# def send_quick_replies():
-#     jsonobject = {
-#   "recipient":{
-#     "id":"<PSID>"
-#   },
-#   "messaging_type": "RESPONSE",
-#   "message":{
-#     "text": "How may we assist you today:",
-#     "quick_replies":[
-#       {
-#         "content_type":"text",
-#         "title":"Entertainment",
-#         "payload":"<POSTBACK_PAYLOAD>",
-#       },{
-#         "content_type":"text",
-#         "title":"Get Updates",
-#         "payload":"<POSTBACK_PAYLOAD>",
-#       }
-#     ]
-#   }
-# }
-#     quickreply = json.dumps(jsonobject)
-
-#     auth = {
-#         'access_token': PAGE_ACCESS_TOKEN
-#     }
-    
-#     response = requests.post(
-#         FB_API_URL,
-#         params=auth,
-#         json=quickreply)
-#     return response.json()
 
 
 def covnewsdic(i):
@@ -137,10 +102,12 @@ def prevention(sender):
 
 """Handles 'covnews' symp"""
 def symptoms(sender):
-    return ""
+    response = "Stay tf home "
+    return respond(sender, response)
+
+
 
 """Places in lockdown feature"""
-
 def pil(sender, text):
     return ""
 
@@ -154,16 +121,44 @@ def countryStat(country):
 
 
 """Handles 'ent' selection"""
-
-
-
 def placesInfo():
     return ""
 
 
 
 
+# def send_quick_replies():
+#     jsonobject = {
+#   "recipient":{
+#     "id":"<PSID>"
+#   },
+#   "messaging_type": "RESPONSE",
+#   "message":{
+#     "text": "How may we assist you today:",
+#     "quick_replies":[
+#       {
+#         "content_type":"text",
+#         "title":"Entertainment",
+#         "payload":"<POSTBACK_PAYLOAD>",
+#       },{
+#         "content_type":"text",
+#         "title":"Get Updates",
+#         "payload":"<POSTBACK_PAYLOAD>",
+#       }
+#     ]
+#   }
+# }
+#     quickreply = json.dumps(jsonobject)
 
+#     auth = {
+#         'access_token': PAGE_ACCESS_TOKEN
+#     }
+    
+#     response = requests.post(
+#         FB_API_URL,
+#         params=auth,
+#         json=quickreply)
+#     return response.json()
 
 
 # """Handles receiving message from the  user"""

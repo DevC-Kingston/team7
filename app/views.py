@@ -44,7 +44,6 @@ def listen():
             #if text != "CovNews" or "pil":
                 
           #   send_quick_replies()
-
         return text
 
 """What Facebook use to verify the right server"""

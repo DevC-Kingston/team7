@@ -30,7 +30,7 @@ def listen():
             if is_user_message(x):
                 text = x['message']['text']
                 sender_id = x['sender']['id']
-                respond(sender_id, text)
+                respond(sender_id, text)   
 
         return "ok"
 
@@ -47,6 +47,11 @@ def is_user_message(message):
             message['message'].get('text') and
             not message['message'].get("is_echo"))
 
+"""Check for Quick Replies"""
+def is_quick_reply(message):    
+    return (message.get('message'))
+
+
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
     response = get_bot_response(message)
@@ -54,7 +59,28 @@ def respond(sender, message):
 
 """This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
 def get_bot_response(message):
-    return "This is a dummy response to '{}'".format(message)
+    pay = {
+        "recipient": {
+            "id": "<PSID>"
+        },
+        "messaging_type": "RESPONSE",
+        "message": {
+            "text": "Select an option to continue:",
+            "quick_replies": [
+                {
+                    "content_type": "text",
+                    "title": "Entertainment",
+                    "payload": "<POSTBACK_PAYLOAD>",
+                }, {
+                    "content_type": "text",
+                    "title": "Enquiries",
+                    "payload": "<POSTBACK_PAYLOAD>",
+                }
+            ]
+        }
+    } 
+    "https://graph.facebook.com/v7.0/me/messages?access_token=<PAGE_ACCESS_TOKEN>"
+    return pay
 
 
 #uses PyMessenger to send response to user

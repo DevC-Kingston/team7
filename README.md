@@ -60,4 +60,4 @@ Product Roadmap - next features for example
 
 ## Try it out
 [https://github.com/DevC-Kingston/team7](link) </br>
-[Add link to GitHub Page](link)
+[https://devc-kingston.github.io/team7/](link)

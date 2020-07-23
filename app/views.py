@@ -30,7 +30,17 @@ def listen():
             if is_user_message(x):
                text = x['message']['text']
                sender_id = x['sender']['id']
-               respond(sender_id, text)
+               if text == "covnews":
+                   print("something")
+               elif text == "entertainment":
+                   print("something")
+               else:
+                   return "Please type 'covnews' or 'entertainment'"
+
+
+              # respond(sender_id, text)
+            #if text != "CovNews" or "Entertainment":
+                
           #   send_quick_replies()
 
         return "ok"
@@ -48,12 +58,6 @@ def is_user_message(message):
             message['message'].get('text') and
             not message['message'].get("is_echo"))
             
-
-# """Check for Quick Replies"""
-# def is_quick_reply(message):    
-#     return (message.get('message'))
-
-
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
     response = get_bot_response(message)
@@ -104,7 +108,54 @@ def send_quick_replies():
         json=quickreply)
     return response.json()
 
-    
+
+def covnewsdic(i):
+    switcher={
+        "prevention": prevention, 
+        "symptoms": symptoms
+             }
+
+    if text == "prevention":
+        return switcher["preventon"]()
+    elif text =="symptoms":
+        return switcher["symptoms"]()
+    else:
+        return "Please type'prevention' or 'symptoms'"
+
+
+
+"""Handles 'covnews' selection"""
+def covnews():
+    return ""
+
+"""Handles 'covnews' prevention msg"""
+def prevention():
+    return ""
+
+"""Handles 'covnews' symp"""
+def symptoms():
+    return ""
+
+"""Handles 'covnews' worldwide"""
+def countryStat(country):
+    return ""
+
+
+
+
+
+
+"""Handles 'ent' selection"""
+def ent():
+    return ""
+
+
+def placesInfo():
+    return ""
+
+
+
+
 
 
 

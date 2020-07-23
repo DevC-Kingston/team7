@@ -46,10 +46,11 @@ def is_user_message(message):
     return (message.get('message') and
             message['message'].get('text') and
             not message['message'].get("is_echo"))
+            
 
-"""Check for Quick Replies"""
-def is_quick_reply(message):    
-    return (message.get('message'))
+# """Check for Quick Replies"""
+# def is_quick_reply(message):    
+#     return (message.get('message'))
 
 
 """Formulate a response to the user and pass it on to a function that sends it."""
@@ -59,7 +60,7 @@ def respond(sender, message):
 
 """This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
 def get_bot_response(message):
-    return "This is a dummy response to '{ }'".format(message)
+    return "This is a dummy response to '{}'".format(message)
 
 
 #uses PyMessenger to send response to user

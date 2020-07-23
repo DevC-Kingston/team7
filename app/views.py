@@ -35,7 +35,7 @@ def listen():
                if text == "covnews":
                    return covnews(sender_id,text)
                elif text == "pil":
-                  return ent(sender_id,text)
+                  return pil(sender_id,text)
                else:
                    response = "I am sorry, I do not understand. Please enter "'covnews'" or "'pil'" to continue"
                    return respond(sender_id, response)

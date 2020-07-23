@@ -14,6 +14,17 @@ PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTU
 
 bot = Bot(PAGE_ACCESS_TOKEN)
 
+"""Formulate a response to the user and pass it on to a function that sends it."""
+def respond(sender, message):
+    response = get_bot_response(message)
+    send_message(sender, response)
+
+
+"""Check if the message is a message from the user"""
+def is_user_message(message):
+    return (message.get('message') and
+            message['message'].get('text') and
+            not message['message'].get("is_echo"))
 
 
 
@@ -42,27 +53,13 @@ def verify_webhook(req):
     else:
         return "incorrect again"
 
-def send_message(recipient_id, text):
-    """Send a response to Facebook"""
-    payload = {
-        'message': {
-            'text': text
-        },
-        'recipient': {
-            'id': recipient_id
-        },
-        'notification_type': 'regular'
-    }
-    auth = {
-        'access_token': PAGE_ACCESS_TOKEN
-    }
-    response = requests.post(
-        FB_API_URL,
-        params=auth,
-        json=payload
-    )
 
-    response.json()
+#uses PyMessenger to send response to user
+def send_message(recipient_id, response):
+    #sends user the text message provided via input response parameter
+    bot.send_text_message(recipient_id, response)
+    return "success"
+
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -90,8 +87,24 @@ def rec_message(text):
         return "Message Processed"
 
 
-#uses PyMessenger to send response to user
-def send_message(recipient_id, response):
-    #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, response)
-    return "success"
+# def send_message(recipient_id, text):
+    #     """Send a response to Facebook"""
+    #     payload = {
+    #         'message': {
+    #             'text': text
+    #         },
+    #         'recipient': {
+    #             'id': recipient_id
+    #         },
+    #         'notification_type': 'regular'
+    #     }
+    #     auth = {
+    #         'access_token': PAGE_ACCESS_TOKEN
+    #     }
+    #     response = requests.post(
+    #         FB_API_URL,
+    #         params=auth,
+    #         json=payload
+    #     )
+
+    #     response.json()

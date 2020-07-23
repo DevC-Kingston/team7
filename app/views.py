@@ -12,6 +12,7 @@ FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
 VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='
 PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
 sender_id = 000
+text = ""
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 """The listen() function handles these http requests and 
@@ -41,7 +42,6 @@ def listen():
 
 
               #respond(sender_id, text)
-            #if text != "CovNews" or "pil":
         return
 
 """What Facebook use to verify the right server"""
@@ -122,10 +122,10 @@ def covnewsdic(i):
 def covnews(sender):
     response = "Would you like info about Symptoms or Prevention"
     respond(sender,response)
-    y=listen()
-    if y == "prevention":
+    
+    if text == "prevention":
         prevention(sender)
-    elif y == "symptoms":
+    elif text == "symptoms":
         symptoms(sender)
     return "ok"
     

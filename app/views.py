@@ -14,6 +14,10 @@ PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTU
 
 bot = Bot(PAGE_ACCESS_TOKEN)
 
+"""This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
+def get_bot_response(message):
+    return "This is a dummy response to '{}'".format(message)
+
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
     response = get_bot_response(message)

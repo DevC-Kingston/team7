@@ -28,9 +28,10 @@ def listen():
         event = payload['entry'][0]['messaging']
         for x in event:
             if is_user_message(x):
-                text = x['message']['text']
-                sender_id = x['sender']['id']
-                respond(sender_id, text)   
+             #   text = x['message']['text']
+             #  sender_id = x['sender']['id']
+             #  respond(sender_id, text)
+             send_quick_replies()
 
         return "ok"
 
@@ -68,6 +69,43 @@ def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
     return "success"
+
+def send_quick_replies():
+    jsonobject = {
+  "recipient":{
+    "id":"<PSID>"
+  },
+  "messaging_type": "RESPONSE",
+  "message":{
+    "text": "How may we assist you today:",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Entertainment",
+        "payload":"<POSTBACK_PAYLOAD>",
+      },{
+        "content_type":"text",
+        "title":"Get Updates",
+        "payload":"<POSTBACK_PAYLOAD>",
+      }
+    ]
+  }
+}
+    quickreply = json.dumps(jsonoject)
+
+    auth = {
+        'access_token': PAGE_ACCESS_TOKEN
+    }
+    
+    response = requests.post(
+        FB_API_URL,
+        params=auth,
+        json=quickreply)
+    return response.json()
+
+    
+
+
 
 # """Handles receiving message from the  user"""
 # @app.route("/", methods=['GET', 'POST'])

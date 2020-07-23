@@ -2,12 +2,15 @@
 .DS_Store
 Thumbs.db
 
+#Visual Studio
+.vs/
 *.py[cod]
 *$py.class
 
 # virtualenv
 .venv/
 venv/
+myvenv/
 
 # nodejs
 node_modules

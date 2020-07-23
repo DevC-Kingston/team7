@@ -54,14 +54,14 @@ def is_quick_reply(message):
 
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
-    response = get_bot_response(message)
+    response = get_bot_response(sender,message)
     send_message(sender, response)
 
 """This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
-def get_bot_response(message):
+def get_bot_response(sender_id, message):
     pay = {
         "recipient": {
-            "id": "<PSID>"
+            "id": "sender_id"
         },
         "messaging_type": "RESPONSE",
         "message": {
@@ -79,14 +79,14 @@ def get_bot_response(message):
             ]
         }
     } 
-    "https://graph.facebook.com/v7.0/me/messages?access_token=<PAGE_ACCESS_TOKEN>"
+    # https://graph.facebook.com/v7.0/me/messages?access_token=<PAGE_ACCESS_TOKEN>
     return pay
 
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
     #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, response)
+    bot.send_message(recipient_id, response)
     return "success"
 
 # """Handles receiving message from the  user"""
@@ -113,11 +113,6 @@ def send_message(recipient_id, response):
 #                         response_sent_nontext = get_message()
 #                         send_message(recipient_id, response_sent_nontext)
 #         return "Message Processed"
-
-
-
-
-
 
 
 

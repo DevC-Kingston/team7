@@ -30,12 +30,13 @@ def listen():
             if is_user_message(x):
                text = x['message']['text']
                sender_id = x['sender']['id']
+
                if text == "covnews":
-                   print("something")
+                   return covnews(sender_id,text)
                elif text == "entertainment":
-                   print("something")
+                  return ent(sender_id,text)
                else:
-                   return "Please type 'covnews' or 'entertainment'"
+                   return respond(sender_id, "")
 
 
               # respond(sender_id, text)
@@ -60,13 +61,18 @@ def is_user_message(message):
             
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
-    response = get_bot_response(message)
+    
+    # response = get_bot_response(message)
     send_message(sender, response)
 
 """This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
-def get_bot_response(message):
-    reply = "Type CovNews or Entertainment"
-    return "This is a dummy response to {message} Please {reply}".format(message=message, reply=reply)
+# def get_bot_response(message):
+#     reply = "Type CovNews or Entertainment"
+#     return "This is a dummy response to {message} Please {reply}".format(message=message, reply=reply)
+
+def preventionResponse():
+    return ""
+    
 
 
 #uses PyMessenger to send response to user
@@ -75,38 +81,38 @@ def send_message(recipient_id, response):
     bot.send_text_message(recipient_id, response)
     return "success"
 
-def send_quick_replies():
-    jsonobject = {
-  "recipient":{
-    "id":"<PSID>"
-  },
-  "messaging_type": "RESPONSE",
-  "message":{
-    "text": "How may we assist you today:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Entertainment",
-        "payload":"<POSTBACK_PAYLOAD>",
-      },{
-        "content_type":"text",
-        "title":"Get Updates",
-        "payload":"<POSTBACK_PAYLOAD>",
-      }
-    ]
-  }
-}
-    quickreply = json.dumps(jsonobject)
+# def send_quick_replies():
+#     jsonobject = {
+#   "recipient":{
+#     "id":"<PSID>"
+#   },
+#   "messaging_type": "RESPONSE",
+#   "message":{
+#     "text": "How may we assist you today:",
+#     "quick_replies":[
+#       {
+#         "content_type":"text",
+#         "title":"Entertainment",
+#         "payload":"<POSTBACK_PAYLOAD>",
+#       },{
+#         "content_type":"text",
+#         "title":"Get Updates",
+#         "payload":"<POSTBACK_PAYLOAD>",
+#       }
+#     ]
+#   }
+# }
+#     quickreply = json.dumps(jsonobject)
 
-    auth = {
-        'access_token': PAGE_ACCESS_TOKEN
-    }
+#     auth = {
+#         'access_token': PAGE_ACCESS_TOKEN
+#     }
     
-    response = requests.post(
-        FB_API_URL,
-        params=auth,
-        json=quickreply)
-    return response.json()
+#     response = requests.post(
+#         FB_API_URL,
+#         params=auth,
+#         json=quickreply)
+#     return response.json()
 
 
 def covnewsdic(i):
@@ -122,14 +128,19 @@ def covnewsdic(i):
     else:
         return "Please type'prevention' or 'symptoms'"
 
+greetings = {"hi", "hello", "good day"}
+
 
 
 """Handles 'covnews' selection"""
-def covnews():
-    return ""
+def covnews(sender):
+    response = "Would you like info about Symptoms, Prevention or inquire about a store near you?"
+    return respond(sender,response)
+    
 
 """Handles 'covnews' prevention msg"""
 def prevention():
+
     return ""
 
 """Handles 'covnews' symp"""
@@ -146,7 +157,7 @@ def countryStat(country):
 
 
 """Handles 'ent' selection"""
-def ent():
+def ent(sender_id,text):
     return ""
 
 

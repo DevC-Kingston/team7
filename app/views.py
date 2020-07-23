@@ -36,15 +36,15 @@ def listen():
                elif text == "pil":
                   return ent(sender_id,text)
                else:
-                   response = "I am sorry but I do not understand. Please enter "'covnews'" or "'pil'" to continue"
+                   response = "I am sorry, I do not understand. Please enter "'covnews'" or "'pil'" to continue"
                    return respond(sender_id, response)
 
 
               # respond(sender_id, text)
             #if text != "CovNews" or "pil":
                 
-          #   send_quick_replies()
-        return text
+            # send_quick_replies()
+        # return text
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):

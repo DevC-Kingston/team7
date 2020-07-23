@@ -33,9 +33,9 @@ def listen():
                sender_id = x['sender']['id']
 
                if text == "covnews":
-                   return covnews(sender_id,text)
+                   return covnews(sender_id)
                elif text == "pil":
-                  return pil(sender_id,text)
+                  return pil(sender_id)
                else:
                    response = "I am sorry, I do not understand. Please enter "'covnews'" or "'pil'" to continue"
                    return respond(sender_id, response)
@@ -108,7 +108,7 @@ def symptoms(sender):
 
 
 """Places in lockdown feature"""
-def pil(sender, text):
+def pil(sender):
     return ""
 
 """Handles 'covnews' worldwide"""

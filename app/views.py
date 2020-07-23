@@ -70,16 +70,9 @@ def send_message(recipient_id, response):
 
 
     switcher={
-        "prevention": prevention, 
-        "symptoms": symptoms
+        "pre": prevention, 
+        "sym": symptoms
              }
-
-    # if text == "prevention":
-    #     return switcher["preventon"]()
-    # elif text =="symptoms":
-    #     return switcher["symptoms"]()
-    # else:
-    #     return "Please type'prevention' or 'symptoms'"
 
 
 """Handles 'covnews' selection"""
@@ -91,6 +84,9 @@ def covnews(sender):
         switcher[prevention](sender)
     elif text == "symptoms":
         switcher[symptoms](sender)
+    else:
+        return "Please type'prevention' or 'symptoms'"
+
     return "ok"
     
 
@@ -124,6 +120,13 @@ def placesInfo():
     return ""
 
 
+
+ # if text == "prevention":
+    #     return switcher["preventon"]()
+    # elif text =="symptoms":
+    #     return switcher["symptoms"]()
+    # else:
+    #     return "Please type'prevention' or 'symptoms'"
 
 
 # def send_quick_replies():

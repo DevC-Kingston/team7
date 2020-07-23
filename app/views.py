@@ -97,7 +97,7 @@ def send_quick_replies():
         'access_token': PAGE_ACCESS_TOKEN
     }
     
-    response = requests.post(
+    response = request.post(
         FB_API_URL,
         params=auth,
         json=quickreply)

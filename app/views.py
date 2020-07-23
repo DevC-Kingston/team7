@@ -14,6 +14,10 @@ PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTU
 sender_id = 000
 text = ""
 bot = Bot(PAGE_ACCESS_TOKEN)
+switcher = {
+    "prevention": prevention,
+    "symptoms": symptoms
+}
 
 """The listen() function handles these http requests and 
 checks that they contain a valid Facebook message"""
@@ -69,11 +73,6 @@ def send_message(recipient_id, response):
     return "success"
 
 
-    switcher={
-        "prevention": prevention, 
-        "symptoms": symptoms
-             }
-
     # if text == "prevention":
     #     return switcher["preventon"]()
     # elif text =="symptoms":
@@ -88,7 +87,7 @@ def covnews(sender):
     respond(sender,response)
     
     if text == "prevention":
-        switcher[prevention](sender)
+        switcher.get(prevention)(sender)
     elif text == "symptoms":
         switcher[symptoms](sender)
     return "ok"

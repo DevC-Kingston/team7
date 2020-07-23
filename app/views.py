@@ -62,7 +62,7 @@ def respond(sender, message):
 """This is just a dummy function, returning a variation of what the user said. Replace this function with one connected to chatbot."""
 def get_bot_response(message):
     reply = "Type CovNews or Entertainment"
-    return "This is a dummy response to {message} Please {reply}'.format(message=message, reply=reply)"
+    return "This is a dummy response to {message} Please {reply}".format(message=message, reply=reply)
 
 
 #uses PyMessenger to send response to user

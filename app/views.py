@@ -17,7 +17,7 @@ bot = Bot(PAGE_ACCESS_TOKEN)
 
 
 
-@app.route('/webhook', methods = ['GET'])
+@app.route('/webhook', methods = ['GET', 'POST'])
 def listen():
     """This is the main function flask uses to 
     listen at the `/webhook` endpoint"""

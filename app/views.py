@@ -42,7 +42,7 @@ def listen():
 
 
               #respond(sender_id, text)
-        return
+        return "ok"
 
 """What Facebook use to verify the right server"""
 def verify_webhook(req):

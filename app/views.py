@@ -14,10 +14,16 @@ VERIFY_TOKEN = '5NclPz4kdN0cX06Hy+aHzaPM8zRyoI3Xgb4NXJjtTCs='  # openssl rand -b
 PAGE_ACCESS_TOKEN = 'EAAKSLLFWS2gBABZBd7p8Dpndc3K533G4J33e8zBhEneiMbUvMnxBWKfzTUXRcMyZA5zf8MniYFcZCrjLWm2nVZAhZBIVsmAXZCLoH2KK6UU3jBnq0bNUGytxSPaGFBY2Qa8XFIbYno70qBizZA1qK7FB6ZBplbLlWTSEjC0Ww84W9wZDZD'
 
 
+"""What Facebook use to verify the right server"""
+def verify_webhook(req):
+    if req.args.get("hub.verify_token") == VERIFY_TOKEN:
+        return req.args.get("hub.challenge")
+    else:
+        return "incorrect again"
+
+
 """The listen() function handles these http requests and 
 checks that they contain a valid Facebook message"""
-
-
 @app.route('/webhook', methods=['GET', 'POST'])
 def listen():
     """This is the main function flask uses to 
@@ -32,29 +38,12 @@ def listen():
             if is_user_message(x):
                text = x['message']['text']
                sender_id = x['sender']['id']
-
-            #    if text == "covnews":
-            #        return covnews(sender_id)
-            #    elif text == "pil":
-            #       return pil(sender_id)
-            #    else:
-            #        response = "I am sorry, I do not understand. Please enter "'covnews'" or "'pil'" to continue"
-            return respond(sender_id, response)
+               return respond(sender_id, response)
               #respond(sender_id, text)
         return "ok"
 
 
-"""What Facebook use to verify the right server"""
-def verify_webhook(req):
-    if req.args.get("hub.verify_token") == VERIFY_TOKEN:
-        return req.args.get("hub.challenge")
-    else:
-        return "incorrect again"
-
-
 """Check if the message is a message from the user"""
-
-
 def is_user_message(message):
     return (message.get('message') and
             message['message'].get('text') and

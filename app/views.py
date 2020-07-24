@@ -114,8 +114,6 @@ def countryStat(country):
 def placesInfo():
     return ""
 
-
-
  # if text == "prevention":
     #     return switcher["preventon"]()
     # elif text =="symptoms":
@@ -211,3 +209,4 @@ def placesInfo():
     #     )
 
     #     response.json()
+

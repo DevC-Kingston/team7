@@ -52,7 +52,7 @@ def is_user_message(message):
 
 """Formulate a response to the user and pass it on to a function that sends it."""
 def respond(sender, message):
-    response = get_bot_response(message)
+    # response = get_bot_response(message)
     send_message(sender, message)
     return "ok"
 
